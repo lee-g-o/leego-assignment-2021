@@ -18,7 +18,7 @@ api-server를 다운로드하여 Maven을 통해 빌드합니다.
 ```bash
 $ mvn package
 $ cd target
-$ java -jar -Dserver.port=8080 api-server-0.0.1-SNAPSHOT.jar
+$ java -jar -Dserver.port=8888 api-server-0.0.1-SNAPSHOT.jar
 ```
 
 ### case 2) Microservice
