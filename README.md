@@ -68,7 +68,7 @@ $ java -jar -Deureka.client.service-url.default-zone=http://{service-discovery-i
 ### 1. 지역 정보 검색
 카카오 지역 API를 사용하여 검색 결과를 받아오며, 장소의 상호명을 이용해 카카오 이미지 검색의 결과를 함께 제공합니다.  
 카카오 지역 API를 정상적으로 이용할 수 없거나 조회되는 내용이 없을 경우 네이버 지역 API를 사용합니다.  
-> 네이버 지역 API는 Pagination이 지원되지 않으며, size 최대값은 5, page 최대값은 1로 제약되어 있습니다.  
+> :warning:네이버 지역 API는 Pagination이 지원되지 않으며, size 최대값은 5, page 최대값은 1로 제약되어 있습니다.  
 
 ## Request
 ```http
