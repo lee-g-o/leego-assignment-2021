@@ -1,0 +1,64 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: api-server
+  h2:
+    console:
+      enabled: true
+  datasource:
+    initialization-mode: never
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 1
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+    registry-fetch-interval-seconds: 1
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeout-in-milliseconds: 5000
+      circuitBreaker:
+        request-volume-threshold: 5
+
+logging:
+  config: classpath:config/logback-spring.xml
+
+kakao:
+  host: 'https://dapi.kakao.com'
+  local-search-uri: '/v2/local/search/keyword.json'
+  image-search-uri: '/v2/search/image'
+  api-key: 'KakaoAK 7938ce17f332bdb030b2359f8a64467f'
+
+naver:
+  host: 'https://openapi.naver.com'
+  local-search-uri: '/v1/search/local.json'
+  image-search-uri: '/v1/search/image'
+  client-id: 'kK5EgiGa1CFHEwRyeULu'
+  client-secret: 'RDQHY87cBL'
+
+api:
+  connect-timeout: 1500
+  image:
+    result-size: 3

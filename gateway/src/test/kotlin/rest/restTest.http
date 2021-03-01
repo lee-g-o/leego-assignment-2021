@@ -1,0 +1,7 @@
+### 1. search api
+GET http://localhost:8080/api/search?query=부산역&size=3&page=1
+Content-Type: application/json
+
+### 2. ranking api
+GET http://localhost:8080/api/ranking
+Content-Type: application/json

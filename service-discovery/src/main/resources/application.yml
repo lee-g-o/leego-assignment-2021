@@ -1,0 +1,21 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: service-discovery
+
+eureka:
+  server:
+    response-cache-update-interval-ms: 1000
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+    register-with-eureka: false
+    fetch-registry: true
+  instance:
+    lease-expiration-duration-in-seconds: 5
+
+logging:
+  config: classpath:config/logback-spring.xml
+
