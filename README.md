@@ -27,7 +27,7 @@ api-server, gateway, service-discovery를 각각 다운 받은 후 Maven을 통�
 실행 순서는 크게 중요하지 않으나 service-discovery -> gateway -> api-server 순서로 실행하는 것을 권장합니다.  
 > Request는 반드시 gateway로 전송해야 합니다.  
 
-> 주의) Eureka 설계 특성상 [서비스의 UP/DOWN 감지에 약간의 시간이 소요](https://projects.spring.io/spring-cloud/spring-cloud.html#_why_is_it_so_slow_to_register_a_service)될 수 있습니다.  
+> :warning:주의) Eureka 설계 특성상 [서비스의 UP/DOWN 감지에 약간의 시간이 소요](https://projects.spring.io/spring-cloud/spring-cloud.html#_why_is_it_so_slow_to_register_a_service)될 수 있습니다.  
 > 이로 인해 **일시적으로 통신이 원활하지 않는 현상이 발생**할 수도 있습니다.  
 > 이러한 현상이 발생하신 경우 일정 시간 대기하거나 gateway로 request를 수회 반복하시면 해결됩니다.
 
@@ -49,8 +49,12 @@ $ mvn package
 $ cd target
 $ java -jar api-server-0.0.1-SNAPSHOT.jar &
 $ java -jar api-server-0.0.1-SNAPSHOT.jar &
-$ java -jar api-server-0.0.1-SNAPSHOT.jar & 
+$ java -jar api-server-0.0.1-SNAPSHOT.jar &
 .....(필요한만큼 동시 실행 가능)
+
+**service-discovery와 동일 서버가 아닐 경우 아래와 같이 실행**
+$ java -jar -Deureka.client.service-url.default-zone=http://{service-discovery-ip:port}/eureka/ gateway-0.0.1-SNAPSHOT.jar &
+$ java -jar -Deureka.client.service-url.default-zone=http://{service-discovery-ip:port}/eureka/ api-server-0.0.1-SNAPSHOT.jar &
 ```
 
 | Service name  | Default port |
