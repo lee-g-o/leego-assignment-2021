@@ -12,7 +12,7 @@
 ## 실행 방법
 ### case 1) Standalone
 gateway 및 service-discovery 없이 api-server 단독으로 테스트가 가능합니다.  
-api-server를 다운 받은 후 Maven을 통해 빌드합니다.  
+api-server를 다운로드하여 Maven을 통해 빌드합니다.  
 동시 실행을 위해 Random port로 설정되어있으므로 반드시 port를 지정해야 합니다.
 
 ```bash
@@ -23,11 +23,11 @@ $ java -jar -Dserver.port=8080 api-server-0.0.1-SNAPSHOT.jar
 
 ### case 2) Microservice
 다수의 api-server를 동시에 사용할 수 있습니다.  
-api-server, gateway, service-discovery를 각각 다운 받은 후 Maven을 통해 빌드합니다.  
-실행 순서는 크게 중요하지 않으나 service-discovery -> gateway -> api-server 순서로 실행하는 것을 권장합니다.  
+api-server, gateway, service-discovery를 각각 Maven을 통해 빌드해야 합니다.  
+실행 순서는 크게 중요하지 않으나 **service-discovery** -> **gateway** -> **api-server** 순서로 실행하는 것을 권장합니다.  
 > Request는 반드시 gateway로 전송해야 합니다.  
 
-> :warning:주의) Eureka 설계 특성상 [서비스의 UP/DOWN 감지에 약간의 시간이 소요](https://projects.spring.io/spring-cloud/spring-cloud.html#_why_is_it_so_slow_to_register_a_service)될 수 있습니다.  
+> :warning:주의) Eureka(service-discovery) 특성으로 인하여 [서비스의 UP/DOWN 감지에 약간의 시간이 소요](https://projects.spring.io/spring-cloud/spring-cloud.html#_why_is_it_so_slow_to_register_a_service)될 수 있습니다.  
 > 이로 인해 **일시적으로 통신이 원활하지 않는 현상이 발생**할 수도 있습니다.  
 > 이러한 현상이 발생하신 경우 일정 시간 대기하거나 gateway로 request를 수회 반복하시면 해결됩니다.
 
