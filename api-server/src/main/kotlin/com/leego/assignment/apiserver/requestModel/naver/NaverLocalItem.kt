@@ -10,6 +10,6 @@ data class NaverLocalItem(var title: String,
                           var telephone: String?,
                           var address: String?,
                           var roadAddress: String?,
-                          var mpx: String?,
+                          var mapx: String?,
                           var mapy: String?,
                           var imageUrls: ArrayList<String>?)

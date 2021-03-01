@@ -23,7 +23,7 @@ zuul:
   ignored-services: '*'
   routes:
     api-server:
-      path: /api/**
+      path: /**
 
 ribbon:
   server-list-refresh-interval: 1000
