@@ -1,10 +1,10 @@
 package com.leego.assignment.apiserver.controller
 
 import com.leego.assignment.apiserver.model.QueryCountModel
+import com.leego.assignment.apiserver.model.QuerySyncCountModel
 import com.leego.assignment.apiserver.responseModel.ErrorMessage
 import com.leego.assignment.apiserver.service.QueryCountService
 import com.leego.assignment.apiserver.service.UniRestService
-import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.*
 
 
@@ -45,5 +45,17 @@ class ApiController (private val uniRestService: UniRestService,
     @RequestMapping(value = ["/instanceRank"], method = [RequestMethod.GET], produces = ["application/json"])
     fun instanceRank(): List<QueryCountModel> {
         return queryCountService.getInstanceRanking()
+    }
+
+    @ResponseBody
+    @RequestMapping(value = ["/syncQueryCount"], method = [RequestMethod.POST], produces = ["application/json"])
+    fun syncQueryCount(@RequestBody requestBody: String) {
+        queryCountService.syncQueryCount(requestBody)
+    }
+
+    @ResponseBody
+    @RequestMapping(value = ["/syncRanking"], method = [RequestMethod.GET], produces = ["application/json"])
+    fun syncRanking(): Any {
+        return queryCountService.selectQuerySyncCountRank()
     }
 }

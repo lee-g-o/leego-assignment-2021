@@ -17,5 +17,5 @@ eureka:
     lease-expiration-duration-in-seconds: 5
 
 logging:
-  config: classpath:config/logback-spring.xml
+  config: classpath:logback-spring.xml
 

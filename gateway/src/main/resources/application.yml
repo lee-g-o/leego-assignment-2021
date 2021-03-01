@@ -34,4 +34,4 @@ api-server:
     Read-timeout: 5000
 
 logging:
-  config: classpath:config/logback-spring.xml
+  config: classpath:logback-spring.xml

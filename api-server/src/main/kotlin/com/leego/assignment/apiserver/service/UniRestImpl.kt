@@ -1,6 +1,7 @@
 package com.leego.assignment.apiserver.service
 
 import com.leego.assignment.apiserver.common.Utility
+import com.leego.assignment.apiserver.responseModel.RankModel
 import kong.unirest.HttpResponse
 import kong.unirest.JsonNode
 import kong.unirest.Unirest
@@ -49,6 +50,14 @@ class UniRestImpl (private val utility: Utility) {
 
     fun getUniRestToLocalhost(url: String): HttpResponse<JsonNode> {
         return Unirest.get(url).asJson()
+    }
+
+    fun postUniRestToLocalhost(url: String, request: String): HttpResponse<JsonNode> {
+        return try {
+            Unirest.post(url).body(request).asJson()
+        } catch (e: Exception) {
+            throw Exception()
+        }
     }
 
     companion object {

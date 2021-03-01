@@ -43,7 +43,7 @@ hystrix:
         request-volume-threshold: 5
 
 logging:
-  config: classpath:config/logback-spring.xml
+  config: classpath:logback-spring.xml
 
 kakao:
   host: 'https://dapi.kakao.com'
