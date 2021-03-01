@@ -234,7 +234,7 @@ $ curl http://{ip:port}/syncRanking
 ```
 
 ## POM Dependencies list
-- 필수적인 Spring boot & Language dependency 제외 (h2, jpa )  
+- 필수적인 Spring boot & Language dependency 제외 (h2, jpa 등)  
 
 | Dependency  | Description |
 | ------------- | ------------- |
